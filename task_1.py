@@ -1,12 +1,20 @@
 SYMBOLS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 
 
-def read_file() -> str:
-    with open("task_1_decryption.txt", "r", encoding='utf-8') as file:
+def read_file(filename: str) -> str:
+    '''return text from read file'''
+    with open(filename, "r", encoding='utf-8') as file:
         return file.read()
 
 
+def write_file(filename: str, text: str) -> None:
+    '''Writing ciphertext to a text file'''
+    with open(filename, "w", encoding='utf-8') as file:
+        file.write(text)
+
+
 def check_key(key: str) -> bool:
+    '''Checking a key for duplicate or missing characters'''
     for sym in SYMBOLS:
         if(key.count(sym) != 1):
             return False
@@ -14,16 +22,14 @@ def check_key(key: str) -> bool:
 
 
 if "__main__" == __name__:
-    
-    key = input("Введите ключ: ").lower()
+    key = input("Enter the key: ").lower()
     if(len(key) != 33 and not check_key(key)):
-        print("Вы неправильно ввели ключ!")
+        print("You entered the key incorrectly!")
         exit(0)
 
-    text = read_file().lower()
+    text = read_file("task_1_decryption.txt").lower()
 
     for i, sym in enumerate(SYMBOLS):
         text = text.replace(sym, key[i])
 
-    with open("task_1_encryption.txt", "w", encoding='utf-8') as file:
-        file.write(text)
+    write_file("task_1_encryption.txt", text)
