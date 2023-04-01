@@ -60,13 +60,13 @@ print(f"Зашифрованный текст: {encrypted_text}")
 print(f"Дешифрованный текст: {decrypted_text}")
 
 # Запись в файл encrypted_text.txt
-with open("encrypted_text.txt", "w", encoding="utf-8") as f:
+with open("1. encrypted_text.txt", "w", encoding="utf-8") as f:
     f.write(encrypted_text)
 
 # Запись в файл decrypted_text.txt
-with open("decrypted_text.txt", "w", encoding="utf-8") as f:
+with open("1. decrypted_text.txt", "w", encoding="utf-8") as f:
     f.write(decrypted_text)
 
 # Запись в файл key.txt
-with open("key.txt", "w", encoding="utf-8") as f:
+with open("1. key.txt", "w", encoding="utf-8") as f:
     f.write(str(key))
