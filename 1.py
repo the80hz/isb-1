@@ -37,11 +37,9 @@ def vigenere_cipher(text: str, keyword: str, encrypt=True) -> str:
     return "".join(result)
 
 
-keyword = "ИБАС"  # Укажите ключевое слово для шифра Виженера
-key = generate_vigenere_key(keyword)
+KEYWORD = "ИБАС"  # Укажите ключевое слово для шифра Виженера
 
-
-original_text = "На краю дороги стоял дуб. Вероятно, в десять раз старше берез, составлявших лес, он был в десять раз " \
+ORIGINAL_TEXT = "На краю дороги стоял дуб. Вероятно, в десять раз старше берез, составлявших лес, он был в десять раз " \
                 "толще, и в два раза выше каждой березы. Это был огромный, в два обхвата дуб, с обломанными, давно, " \
                 "видно, суками и с обломанной корой, заросшей старыми болячками. С огромными своими неуклюже, " \
                 "несимметрично растопыренными корявыми руками и пальцами, он старым, сердитым и презрительным уродом " \
@@ -52,21 +50,23 @@ original_text = "На краю дороги стоял дуб. Вероятно,
                 "и вон и я растопырил свои обломанные, ободранные пальцы, где ни выросли они — из спины, " \
                 "из боков. Как выросли — так и стою, и не верю вашим надеждам и обманам»."
 
-encrypted_text = vigenere_cipher(original_text, keyword, encrypt=True)
-decrypted_text = vigenere_cipher(encrypted_text, keyword, encrypt=False)
+if __name__ == "__main__":
+    key = generate_vigenere_key(KEYWORD)
+    encrypted_text = vigenere_cipher(ORIGINAL_TEXT, KEYWORD, encrypt=True)
+    decrypted_text = vigenere_cipher(encrypted_text, KEYWORD, encrypt=False)
 
-print(f"Исходный текст: {original_text}")
-print(f"Зашифрованный текст: {encrypted_text}")
-print(f"Дешифрованный текст: {decrypted_text}")
+    print(f"Исходный текст: {ORIGINAL_TEXT}")
+    print(f"Зашифрованный текст: {encrypted_text}")
+    print(f"Дешифрованный текст: {decrypted_text}")
 
-# Запись в файл encrypted_text.txt
-with open("1. encrypted_text.txt", "w", encoding="utf-8") as f:
-    f.write(encrypted_text)
+    # Запись в файл encrypted_text.txt
+    with open("1. encrypted_text.txt", "w", encoding="utf-8") as f:
+        f.write(encrypted_text)
 
-# Запись в файл decrypted_text.txt
-with open("1. decrypted_text.txt", "w", encoding="utf-8") as f:
-    f.write(decrypted_text)
+    # Запись в файл decrypted_text.txt
+    with open("1. decrypted_text.txt", "w", encoding="utf-8") as f:
+        f.write(decrypted_text)
 
-# Запись в файл key.txt
-with open("1. key.txt", "w", encoding="utf-8") as f:
-    f.write(str(key))
+    # Запись в файл key.txt
+    with open("1. key.txt", "w", encoding="utf-8") as f:
+        f.write(str(key))
